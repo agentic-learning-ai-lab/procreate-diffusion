@@ -120,3 +120,16 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
 ## Acknowledgments
 
 The code is adapted from [Huggingface Diffusers](https://github.com/huggingface/diffusers).
+
+## Citation
+If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu).
+If you found our work helpful, please cite it:
+```
+@InProceedings{procreate,
+    author="Lu, Jack and Teehan, Ryan and Ren, Mengye",
+    title="ProCreate, Don’t Reproduce! Propulsive Energy Diffusion for Creative Generation",
+    booktitle="Computer Vision -- ECCV 2024",
+    year="2024",
+    publisher="Springer Nature Switzerland",
+}
+```
