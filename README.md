@@ -10,8 +10,8 @@ Public code release for the paper "ProCreate, Don’t Reproduce! Propulsive Ener
 
 Download and set up the repo:
 ```bash
-git clone https://github.com/Agentic-Learning-AI-Lab/procreate-diffusion-public.git
-cd procreate-diffusion-public
+git clone https://github.com/agentic-learning-ai-lab/procreate-diffusion.git
+cd procreate-diffusion
 ```
 
 Install requirements:
