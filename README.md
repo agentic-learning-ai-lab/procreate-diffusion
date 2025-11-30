@@ -123,7 +123,7 @@ The code is adapted from [Huggingface Diffusers](https://github.com/huggingface/
 
 ## Citation
 If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu).
-If you found our work helpful, please cite it:
+If you found our work helpful, please cite it with the following BibTeX:
 ```
 @InProceedings{procreate,
     author="Lu, Jack and Teehan, Ryan and Ren, Mengye",
