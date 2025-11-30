@@ -1,8 +1,0 @@
-diffusers==0.30.3
-torchvision==0.19.1
-transformers==4.44.2
-datasets==3.0.0
-matplotlib==3.9.2
-einops
-dreamsim==0.2.0
-xformers==0.0.28
