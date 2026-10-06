@@ -1,6 +1,6 @@
 # ProCreate Diffusion
 
-### [📄 Paper](https://arxiv.org/abs/2408.02226) | [🌐 Project Page](https://agenticlearning.ai/procreate/) | [🤗 Data](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8)
+### [📄 Paper](https://arxiv.org/abs/2408.02226) | [🌐 Project Page](https://agenticlearning.ai/procreate/) | [🖼️ Poster](https://jacklu-me.com/assets/pdf/eccv2024-poster-procreate.pdf) | [🤗 Data](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8)
 
 Public code release for the paper "ProCreate, Don't Reproduce! Propulsive Energy Diffusion for Creative Generation" (ECCV 2024).
 
