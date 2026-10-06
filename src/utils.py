@@ -10,22 +10,23 @@ from torchvision import transforms
 
 
 def pairwise_cossim(x, y):
-    """compute pairwise cosine similarity between vectors in x and y"""
+    """Compute pairwise cosine similarity between the vectors in x and y."""
     x_normalized = F.normalize(x, p=2, dim=1)
     y_normalized = F.normalize(y, p=2, dim=1)
     return torch.mm(x_normalized, y_normalized.t())
 
 
 def set_seed(seed):
-    """reproduceability (not perfect due to torch non-deterministic operations)"""
+    """Seed the Python, NumPy, and PyTorch random number generators."""
     random.seed(seed)
     np.random.seed(seed)
     torch.manual_seed(seed)
 
 
 def preprocess_dataset(dataset, image_transforms, tokenizer):
+    """Apply image transforms and caption tokenization to a dataset."""
     def tokenize_captions(examples, tokenizer):
-        """collect and tokenize captions"""
+        """Collect and tokenize captions."""
         captions = [c for c in examples['text']]
         inputs = tokenizer(
             captions,
@@ -37,7 +38,7 @@ def preprocess_dataset(dataset, image_transforms, tokenizer):
         return inputs.input_ids
 
     def preprocess_examples(examples):
-        """transform images and tokenize captions"""
+        """Transform images and tokenize captions."""
         images = [image.convert("RGB") for image in examples['image']]
         examples["pixel_values"] = [image_transforms(image) for image in images]
         examples["input_ids"] = tokenize_captions(examples, tokenizer)
@@ -48,7 +49,7 @@ def preprocess_dataset(dataset, image_transforms, tokenizer):
 
 
 def collate_fn(examples):
-    """collate data"""
+    """Collate a batch of images and tokenized captions."""
     pixel_values = torch.stack([example["pixel_values"] for example in examples])
     pixel_values = pixel_values.to(memory_format=torch.contiguous_format).float()
     input_ids = torch.stack([example["input_ids"] for example in examples])
@@ -57,7 +58,7 @@ def collate_fn(examples):
 
 
 def load_dreamsim(device):
-    """load DreamSim model, preprocessing function, and transform function for decoded VAE latent"""
+    """Load the DreamSim model, its preprocessing function, and a transform for decoded VAE latents."""
     with warnings.catch_warnings():
         warnings.simplefilter("ignore")
         dreamsim_base_model, dreamsim_preprocess = dreamsim(pretrained=True, cache_dir="dreamsim_ckpt")

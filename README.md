@@ -1,8 +1,8 @@
 # ProCreate Diffusion
 
-### [Paper](https://arxiv.org/abs/2408.02226) | [Project Page](https://agenticlearning.ai/procreate/) | [FSCG-8 Dataset](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8)
+### [📄 Paper](https://arxiv.org/abs/2408.02226) | [🌐 Project Page](https://agenticlearning.ai/procreate/) | [🤗 Data](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8)
 
-Public code release for the paper "ProCreate, Don’t Reproduce! Propulsive Energy Diffusion for Creative Generation" (ECCV 2024).
+Public code release for the paper "ProCreate, Don't Reproduce! Propulsive Energy Diffusion for Creative Generation" (ECCV 2024).
 
 ![Teaser Figure](assets/_teaser.png)
 
@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ## Dataset FSCG-8
 
 ![Dataset Figure](assets/_dataset.png)
-The FSCG-8 dataset is locally stored under `few-shot-creative-generation-8`. FSCG-8 can also be loaded from Huggingface as [Jacklu0831/few-shot-creative-generation-8](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8).
+The FSCG-8 dataset is locally stored under `few-shot-creative-generation-8`. FSCG-8 can also be loaded from Hugging Face as [Jacklu0831/few-shot-creative-generation-8](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8).
 
 ## Training
 
@@ -38,7 +38,7 @@ python src/train.py \
 
 ## Sampling
 
-The following command runs ProCreate sampling for the prompt "*a Amedeo Modigliani painting of a boy in a suit and hat*" from a Stable Diffusion checkpoint that is fine-tuned on Amedeo Modigliani paintings. `src/inference.py` automatically downloads the [model weights from Huggingface](https://huggingface.co/Jacklu0831/procreate-diffusion-amedeo-modigliani).
+The following command runs ProCreate sampling for the prompt "*a Amedeo Modigliani painting of a boy in a suit and hat*" from a Stable Diffusion checkpoint that is fine-tuned on Amedeo Modigliani paintings. `src/inference.py` automatically downloads the [model weights from Hugging Face](https://huggingface.co/Jacklu0831/procreate-diffusion-amedeo-modigliani).
 
 ```bash
 python src/inference.py \
@@ -119,17 +119,17 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
 
 ## Acknowledgments
 
-The code is adapted from [Huggingface Diffusers](https://github.com/huggingface/diffusers).
+The code is adapted from [Hugging Face Diffusers](https://github.com/huggingface/diffusers).
 
 ## Citation
-If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu).
-If you found our work helpful, please cite it with the following BibTeX:
-```
-@InProceedings{procreate,
-    author="Lu, Jack and Teehan, Ryan and Ren, Mengye",
-    title="ProCreate, Don’t Reproduce! Propulsive Energy Diffusion for Creative Generation",
-    booktitle="Computer Vision -- ECCV 2024",
-    year="2024",
-    publisher="Springer Nature Switzerland",
+
+If you have any questions or find any bugs, please feel free to contact Jack Lu (yl11330@nyu.edu). If you found our work helpful, please consider giving us a ⭐ and citing us!
+
+```bibtex
+@inproceedings{lu2024procreate,
+  title     = {ProCreate, Don't Reproduce! Propulsive Energy Diffusion for Creative Generation},
+  author    = {Lu, Jack and Teehan, Ryan and Ren, Mengye},
+  booktitle = {European Conference on Computer Vision (ECCV)},
+  year      = {2024}
 }
 ```

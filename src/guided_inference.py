@@ -14,7 +14,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class GuidedInference:
     def __init__(self, pipe, ref_images, msla_step_size, num_inference_steps, dreamsim_w, max_grad_norm, prompt_w):
-        """Init function"""
+        """Store the sampling settings, load DreamSim, and embed the reference images."""
         self.pipe = pipe
         self.ref_images = ref_images
         self.msla_step_size = msla_step_size
@@ -30,7 +30,7 @@ class GuidedInference:
 
     @torch.no_grad()
     def collect_ref_embs(self):
-        """collect dreamsim embeddings of reference images to guide away from"""
+        """Collect DreamSim embeddings of the reference images to guide away from."""
         dreamsim_embs = []
         for image in self.ref_images:
             for img in [image, ImageOps.mirror(image)]:
@@ -40,7 +40,7 @@ class GuidedInference:
 
 
     def ddim_step(self, model_output, timestep, sample, prev_timestep=None):
-        """implementation of a single DDIM denoising step"""
+        """Run a single DDIM denoising step."""
         if prev_timestep is None:
             step_size = self.pipe.scheduler.config.num_train_timesteps // self.pipe.scheduler.num_inference_steps
             prev_timestep = timestep - step_size
@@ -60,7 +60,7 @@ class GuidedInference:
 
 
     def estimate_x0_with_msla(self, latents, timestep, text_embeddings):
-        """make a multi-step prediction of x0 with multiple DDIM sampling steps"""
+        """Predict x0 with multiple DDIM sampling steps (multi-step look-ahead)."""
         # get msla timestep schedule
         timestep = timestep.cpu()
         step_size = math.ceil(timestep / self.msla_step_size)
@@ -75,7 +75,7 @@ class GuidedInference:
 
 
     def __call__(self, prompts, verbose=True):
-        """perform DreamSim guided sampling"""
+        """Sample an image with DreamSim-guided propulsive guidance."""
         self.pipe.scheduler.set_timesteps(self.num_inference_steps, device)
 
         # encode prompt (unconditional followed by conditional) with shape (batchsize x 2, 77, 768)
@@ -125,7 +125,7 @@ class GuidedInference:
                 if total_grad_norm > max_weighted_guide_grad_norm:
                     total_grad = total_grad / total_grad_norm * max_weighted_guide_grad_norm
 
-                # apply propulsive guidance guidance to noise prediction
+                # apply propulsive guidance to the noise prediction
                 noise_pred = noise_pred.detach().clone()
                 alphas_cumprod_t = self.pipe.scheduler.alphas_cumprod[timestep]
                 noise_pred = noise_pred + (1.0 - alphas_cumprod_t) ** 0.5 * total_grad
@@ -144,7 +144,7 @@ class GuidedInference:
 
 
     def unet_forward(self, latents, timestep, text_embeddings):
-        """compute unet noise prediction"""
+        """Compute the UNet noise prediction."""
         latent_model_input = torch.cat([latents] * 2)
         latent_model_input = self.pipe.scheduler.scale_model_input(latent_model_input, timestep=timestep)
         noise_pred = self.pipe.unet(latent_model_input, timestep, encoder_hidden_states=text_embeddings).sample
@@ -154,7 +154,7 @@ class GuidedInference:
 
 
     def guidance_loss_function(self, pred_x0):
-        """compute guidance loss between the estimated pred_x0 and reference images"""
+        """Compute the guidance loss between the estimated pred_x0 and the reference images."""
         # get predicted x0's dreamsim embeddings
         pred_x0_img = self.decode_latents(pred_x0)
         dreamsim_pred_embs = self.dreamsim_model(self.dreamsim_latent_transform(pred_x0_img.float()))
@@ -175,6 +175,7 @@ class GuidedInference:
 
 
     def decode_latents(self, pred_x0):
+        """Decode latents into images with values in [0, 1]."""
         # decode latent into images
         pred_x0_img = self.pipe.vae.decode(
             1.0 / self.pipe.vae.config.scaling_factor * pred_x0.to(self.pipe.vae.dtype),

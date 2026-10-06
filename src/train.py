@@ -22,6 +22,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 def parse_args():
+    """Parse command-line arguments for training."""
     parser = argparse.ArgumentParser(description="Single-GPU training script for ProCreate")
     # model
     parser.add_argument("--pretrained_model_name_or_path", type=str, default="pt-sk/stable-diffusion-1.5",
