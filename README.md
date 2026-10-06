@@ -1,8 +1,14 @@
-# ProCreate Diffusion
+<h1 align="center">ProCreate, Don't Reproduce! Propulsive Energy Diffusion for Creative Generation</h1>
 
-### [📄 Paper](https://arxiv.org/abs/2408.02226) | [🌐 Project Page](https://agenticlearning.ai/procreate/) | [🖼️ Poster](https://jacklu-me.com/assets/pdf/eccv2024-poster-procreate.pdf) | [🤗 Data](https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8)
+<p align="center">
+  <a href="https://arxiv.org/abs/2408.02226"><img alt="arXiv" src="https://img.shields.io/badge/arXiv-2408.02226-b31b1b?logo=arxiv"></a>
+  <a href="https://agenticlearning.ai/procreate/"><img alt="Project Page" src="https://img.shields.io/badge/Project-Page-blue"></a>
+  <a href="https://jacklu-me.com/assets/pdf/eccv2024-poster-procreate.pdf"><img alt="Poster" src="https://img.shields.io/badge/Poster-PDF-orange"></a>
+  <a href="https://huggingface.co/datasets/Jacklu0831/few-shot-creative-generation-8"><img alt="Dataset" src="https://img.shields.io/badge/HF-Dataset-yellow?logo=huggingface"></a>
+  <a href="https://github.com/agentic-learning-ai-lab/procreate-diffusion/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/agentic-learning-ai-lab/procreate-diffusion"></a>
+</p>
 
-Public code release for the paper "ProCreate, Don't Reproduce! Propulsive Energy Diffusion for Creative Generation" (ECCV 2024).
+Official code for ProCreate (ECCV 2024), a simple method that improves the sample diversity and creativity of diffusion models and prevents training data reproduction by propelling generated image embeddings away from a set of reference images.
 
 ![Teaser Figure](assets/_teaser.png)
 
