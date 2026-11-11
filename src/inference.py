@@ -26,6 +26,8 @@ def parse_args():
     parser.add_argument("--pretrained_model_name_or_path", type=str, default="pt-sk/stable-diffusion-1.5",
                         help="path to base pretrained model")
     parser.add_argument("--unet_ckpt_dir", type=str, default="", help="directory of saved unet ckpt from train.py")
+    parser.add_argument("--unet_subfolder", type=str, default="",
+                        help="subfolder of --unet_ckpt_dir holding the unet, e.g. a category of Jacklu0831/procreate-diffusion")
     # dataset
     parser.add_argument("--dataset_dir", type=str, required=True, help="local dataset directory")
     parser.add_argument("--num_train_sample", type=int, default=10,
@@ -76,7 +78,8 @@ pipe = StableDiffusionPipeline.from_pretrained(
     torch_dtype=torch.float16
 )
 if args.unet_ckpt_dir != "":
-    pipe.unet = UNet2DConditionModel.from_pretrained(args.unet_ckpt_dir, torch_dtype=torch.float16)
+    pipe.unet = UNet2DConditionModel.from_pretrained(args.unet_ckpt_dir, subfolder=args.unet_subfolder or None,
+                                                     torch_dtype=torch.float16)
 pipe.scheduler = DDIMScheduler.from_pretrained(args.pretrained_model_name_or_path, subfolder="scheduler")
 pipe = pipe.to(device)
 pipe.set_progress_bar_config(disable=True)

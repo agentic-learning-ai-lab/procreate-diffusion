@@ -44,12 +44,13 @@ python src/train.py \
 
 ## Sampling
 
-The following command runs ProCreate sampling for the prompt "*a Amedeo Modigliani painting of a boy in a suit and hat*" from a Stable Diffusion checkpoint that is fine-tuned on Amedeo Modigliani paintings. `src/inference.py` automatically downloads the [model weights from Hugging Face](https://huggingface.co/Jacklu0831/procreate-diffusion-amedeo-modigliani).
+The following command runs ProCreate sampling for the prompt "*a Amedeo Modigliani painting of a boy in a suit and hat*" from a Stable Diffusion checkpoint that is fine-tuned on Amedeo Modigliani paintings. `src/inference.py` automatically downloads the [model weights from Hugging Face](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/amedeo_modigliani).
 
 ```bash
 python src/inference.py \
     --dataset_dir few-shot-creative-generation-8/amedeo_modigliani \
-    --unet_ckpt_dir Jacklu0831/procreate-diffusion-amedeo-modigliani \
+    --unet_ckpt_dir Jacklu0831/procreate-diffusion \
+    --unet_subfolder amedeo_modigliani \
     --prompt "a Amedeo Modigliani painting of a boy in a suit and hat" \
     --dreamsim_w 250 \
     --max_grad_norm 0.5 \
@@ -67,7 +68,7 @@ Sample outputs:
 
 We also provide a trained checkpoint for each other category in FSCG-8. We use commands in `commands_inference.sh` to display ProCreate samples from each checkpoint.
 
-[Apple checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-apple) with prompt "*an Apple VR headset*":
+[Apple checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/apple) with prompt "*an Apple VR headset*":
 <p float="left">
   <img src="assets/apple0.jpg" width="200" />
   <img src="assets/apple1.jpg" width="200" />
@@ -75,7 +76,7 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
   <img src="assets/apple3.jpg" width="200" />
 </p>
 
-[Burberry checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-burberry) with prompt "*a Burberry stuffed bear*":
+[Burberry checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/burberry) with prompt "*a Burberry stuffed bear*":
 <p float="left">
   <img src="assets/burberry0.jpg" width="200" />
   <img src="assets/burberry1.jpg" width="200" />
@@ -83,7 +84,7 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
   <img src="assets/burberry3.jpg" width="200" />
 </p>
 
-[Frank Gehry checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-frank-gehry) with prompt "*a twisting tall apartment building, designed by Frank Gehry*":
+[Frank Gehry checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/frank_gehry) with prompt "*a twisting tall apartment building, designed by Frank Gehry*":
 <p float="left">
   <img src="assets/frank0.jpg" width="200" />
   <img src="assets/frank1.jpg" width="200" />
@@ -91,7 +92,7 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
   <img src="assets/frank3.jpg" width="200" />
 </p>
 
-[Nouns checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-nouns) with prompt "*a mountain Nouns character*":
+[Nouns checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/nouns) with prompt "*a mountain Nouns character*":
 <p float="left">
   <img src="assets/nouns0.jpg" width="200" />
   <img src="assets/nouns1.jpg" width="200" />
@@ -99,7 +100,7 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
   <img src="assets/nouns3.jpg" width="200" />
 </p>
 
-[One Piece checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-one-piece) with prompt "*a One Piece man in a purple robe*":
+[One Piece checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/one_piece) with prompt "*a One Piece man in a purple robe*":
 <p float="left">
   <img src="assets/one_piece0.jpg" width="200" />
   <img src="assets/one_piece1.jpg" width="200" />
@@ -107,7 +108,7 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
   <img src="assets/one_piece3.jpg" width="200" />
 </p>
 
-[Pokemon checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-pokemon) with prompt "*a jellyfish Pokemon*":
+[Pokemon checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/pokemon) with prompt "*a jellyfish Pokemon*":
 <p float="left">
   <img src="assets/pokemon0.jpg" width="200" />
   <img src="assets/pokemon1.jpg" width="200" />
@@ -115,7 +116,7 @@ We also provide a trained checkpoint for each other category in FSCG-8. We use c
   <img src="assets/pokemon3.jpg" width="200" />
 </p>
 
-[Rococo checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion-rococo) with prompt "*a Rococo style bed*":
+[Rococo checkpoint](https://huggingface.co/Jacklu0831/procreate-diffusion/tree/main/rococo) with prompt "*a Rococo style bed*":
 <p float="left">
   <img src="assets/rococo0.jpg" width="200" />
   <img src="assets/rococo1.jpg" width="200" />

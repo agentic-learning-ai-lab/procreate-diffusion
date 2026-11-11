@@ -2,7 +2,8 @@
 # produce samples from trained amedeo_modigliani checkpoint with a sample prompt
 python src/inference.py \
     --dataset_dir few-shot-creative-generation-8/amedeo_modigliani \
-    --unet_ckpt_dir Jacklu0831/procreate-diffusion-amedeo-modigliani \
+    --unet_ckpt_dir Jacklu0831/procreate-diffusion \
+    --unet_subfolder amedeo_modigliani \
     --prompt "a Amedeo Modigliani painting of a boy in a suit and hat" \
     --dreamsim_w 250 \
     --max_grad_norm 0.5 \
@@ -12,7 +13,8 @@ python src/inference.py \
 # produce samples from trained apple checkpoint with a sample prompt
 python src/inference.py \
     --dataset_dir few-shot-creative-generation-8/apple \
-    --unet_ckpt_dir Jacklu0831/procreate-diffusion-apple \
+    --unet_ckpt_dir Jacklu0831/procreate-diffusion \
+    --unet_subfolder apple \
     --prompt "an Apple VR headset" \
     --dreamsim_w 250 \
     --max_grad_norm 0.3 \
